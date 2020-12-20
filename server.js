@@ -1,10 +1,11 @@
+require('dotenv').config();
 const express = require('express');
 const fileUpload = require('express-fileupload');
 
 const photoRoute = require('./routes/photo');
 
 const app = express();
-const port = 5000;
+const port = process.env.PORT || 5000;
 
 
 app.set('view engine', 'ejs');
