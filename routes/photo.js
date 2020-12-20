@@ -1,10 +1,10 @@
+require('dotenv').config();
 const AWS = require('aws-sdk');
 const router = require('express').Router();
-const awsCredentials = require('../settings.json');
 
 const s3 = new AWS.S3({
-    accessKeyId: awsCredentials.aws_access_key_id,
-    secretAccessKey: awsCredentials.aws_secret_access_key,
+    accessKeyId: process.env.AWS_ACCESS_KEY_ID,
+    secretAccessKey: process.env.AWS_SECRET_ACCESS_KEY,
 });
 
 
