@@ -6,6 +6,16 @@
     <title>Gallery</title>
 </head>
 <body>
-    <input type="file" name="file" id="file">
+    <form method="post" enctype="multipart/form-data">
+        <input type="file" name="photo" id="photo">
+        <button type="submit">Send</button>
+    </form>
+
+    <div>
+        <p>Image</p>
+        <% others.forEach((img) => { %>
+            <img src="https://photo-gallery-heroku.s3.us-east-2.amazonaws.com/<%- img.Key %>" alt="Satania-sama" width="500" height="600">
+        <% }) %>
+    </div>
 </body>
 </html>
