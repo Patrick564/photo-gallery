@@ -15,7 +15,7 @@ app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 app.use(fileUpload());
 
-app.get('/', (req, res) => res.redirect('/photo') );
+app.get('/', (req, res) => res.redirect('/home') );
 app.use('/home', photoRoute);
 
 

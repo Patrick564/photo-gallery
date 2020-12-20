@@ -16,7 +16,7 @@
         <% content.forEach((file) => { %>
             <img src="<%- `${url}${file.Key}` %>" alt="Satania-sama" width="500" height="600" id="<%= file.Key %>">
 
-            <form action="/photo/delete" method="post">
+            <form action="/home/delete" method="post">
                 <input type="hidden" id="file" name="file" value="<%= file.Key %>">
 
                 <button type="submit">
