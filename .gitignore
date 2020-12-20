@@ -1,6 +1,9 @@
+# Node modules
 node_modules/
 
+# Optional files
 files/
 
+# Env files
 settings.json
 *.env

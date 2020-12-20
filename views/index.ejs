@@ -7,14 +7,22 @@
 </head>
 <body>
     <form method="post" enctype="multipart/form-data">
-        <input type="file" name="photo" id="photo">
+        <input type="file" accept="image/*" name="photo" id="photo">
         <button type="submit">Send</button>
     </form>
 
     <div>
         <p>Image</p>
-        <% others.forEach((img) => { %>
-            <img src="https://photo-gallery-heroku.s3.us-east-2.amazonaws.com/<%- img.Key %>" alt="Satania-sama" width="500" height="600">
+        <% content.forEach((file) => { %>
+            <img src="<%- `${url}${file.Key}` %>" alt="Satania-sama" width="500" height="600" id="<%= file.Key %>">
+
+            <form action="/photo/delete" method="post">
+                <input type="hidden" id="file" name="file" value="<%= file.Key %>">
+
+                <button type="submit">
+                    Delete
+                </button>
+            </form>
         <% }) %>
     </div>
 </body>

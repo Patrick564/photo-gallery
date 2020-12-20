@@ -2,33 +2,31 @@ require('dotenv').config();
 const AWS = require('aws-sdk');
 const router = require('express').Router();
 
-const s3 = new AWS.S3({
+const S3 = new AWS.S3({
     accessKeyId: process.env.AWS_ACCESS_KEY_ID,
     secretAccessKey: process.env.AWS_SECRET_ACCESS_KEY,
 });
 
 
 router.get('/', async (req, res, next) => {
-    let img = 'https://photo-gallery-heroku.s3.us-east-2.amazonaws.com/661658.png';
+    let url = 'https://photo-gallery-heroku.s3.us-east-2.amazonaws.com/';
     let data;
     let params = {
         Bucket: 'photo-gallery-heroku',
     }
 
     try {
-        data = await s3.listObjectsV2(params).promise();
+        data = await S3.listObjectsV2(params).promise();
     } catch (error) {
         next(error);
     }
 
-    res.render('index', { img: img, others: data.Contents });
+    res.render('index', { url, content: data.Contents });
 });
 
 router.post('/', async (req, res, next) => {
     if (!req.files || Object.keys(req.files).length === 0) {
-        return res.json({
-            message: 'Error, select an image'
-        });
+        return res.redirect('/');
     }
 
     let photo = req.files.photo;
@@ -39,18 +37,29 @@ router.post('/', async (req, res, next) => {
     };
 
     try {
-        await s3.upload(params).promise();
+        await S3.upload(params).promise();
     } catch (error) {
         next(error);
     }
 
-    res.json({
-        status: 'Uploaded successfully',
-        name: photo.name,
-    });
+    res.redirect('/');
 });
 
-// router.delete();
+router.post('/delete', async (req, res, next) => {
+    let file = req.body.file;
+    let params = {
+        Bucket: 'photo-gallery-heroku',
+        Key: file,
+    };
+
+    try {
+        await S3.deleteObject(params).promise();
+    } catch (error) {
+        next(error);
+    }
+
+    res.redirect('/');
+});
 
 
 module.exports = router;
