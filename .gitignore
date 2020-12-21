@@ -4,6 +4,9 @@ node_modules/
 # Optional files
 files/
 
+# Tailwind files
+*-build.css
+
 # Env files
 settings.json
 *.env

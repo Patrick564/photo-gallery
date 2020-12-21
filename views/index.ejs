@@ -3,6 +3,8 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="/static/tailwind-build.css">
+    <link rel="stylesheet" href="/static/index.css">
     <title>Gallery</title>
 </head>
 <body>
@@ -11,7 +13,7 @@
         <button type="submit">Send</button>
     </form>
 
-    <div>
+    <div class="img">
         <p>Image</p>
         <% content.forEach((file) => { %>
             <img src="<%- `${url}${file.Key}` %>" alt="Satania-sama" width="500" height="600" id="<%= file.Key %>">

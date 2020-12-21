@@ -13,6 +13,7 @@ app.set('views', './views');
 
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
+app.use('/static', express.static('static'));
 app.use(fileUpload());
 
 app.get('/', (req, res) => res.redirect('/home') );
