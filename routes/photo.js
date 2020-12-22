@@ -1,5 +1,6 @@
 require('dotenv').config();
 const AWS = require('aws-sdk');
+const { v4: uuidv4 } = require('uuid');
 const router = require('express').Router();
 
 const S3 = new AWS.S3({
@@ -33,7 +34,7 @@ router.post('/', async (req, res, next) => {
     let params = {
         Bucket: 'photo-gallery-heroku',
         Key: photo.name,
-        Body: photo.data,
+        Body: `${uuidv4()}-${photo.data}`,
     };
 
     try {
