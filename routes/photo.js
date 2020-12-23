@@ -33,8 +33,8 @@ router.post('/', async (req, res, next) => {
     let photo = req.files.photo;
     let params = {
         Bucket: 'photo-gallery-heroku',
-        Key: photo.name,
-        Body: `${uuidv4()}-${photo.data}`,
+        Key: `${uuidv4()}-${photo.name}`,
+        Body: photo.data,
     };
 
     try {

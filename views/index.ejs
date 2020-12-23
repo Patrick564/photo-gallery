@@ -20,15 +20,15 @@
         </label>
     </form>
         
-    <div class="flex flex-wrap sm:content-center lg:content-start m-2">
+    <div class="flex flex-wrap justify-center items-start m-2">
         <% content.forEach((file) => { %>
-            <div class="flex flex-col border-2 m-2 p-3">
-                <img src="<%- `${url}${file.Key}` %>" alt="Satania-sama" class="max-w-xs max-h-72">
+            <div class="bg-gray-200 flex flex-col items-center border-2 border-gray-300 rounded-md m-2 p-3">
+                <img src="<%- `${url}${file.Key}` %>" alt="Satania-sama" class="object-contain w-64 h-64">
     
                 <form action="/home/delete" method="post">
                     <input type="hidden" id="file" name="file" value="<%= file.Key %>">
     
-                    <button type="submit">
+                    <button class="bg-red-200 border-2 border-red-500 rounded-md focus:outline-none mt-2 p-1" type="submit">
                         Delete
                     </button>
                 </form>
