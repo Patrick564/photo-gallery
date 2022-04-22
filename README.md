@@ -1,30 +1,43 @@
-# Photo Gallery
+# Astro Starter Kit: Minimal
 
-A site for upload your photos.
-[Deployed in Heroku](https://shot-gallery.herokuapp.com/)
-
-## Installation
-
-Install dependences
-
-```bash
-npm install
+```
+npm init astro -- --template minimal
 ```
 
-Build Tailwind CSS file
+[![Open in StackBlitz](https://developer.stackblitz.com/img/open_in_stackblitz.svg)](https://stackblitz.com/github/withastro/astro/tree/latest/examples/minimal)
 
-```bash
-npm run build
+> 🧑‍🚀 **Seasoned astronaut?** Delete this file. Have fun!
+
+## 🚀 Project Structure
+
+Inside of your Astro project, you'll see the following folders and files:
+
+```
+/
+├── public/
+├── src/
+│   └── pages/
+│       └── index.astro
+└── package.json
 ```
 
-## Usage
+Astro looks for `.astro` or `.md` files in the `src/pages/` directory. Each page is exposed as a route based on its file name.
 
-Run server with Node or Nodemon
+There's nothing special about `src/components/`, but that's where we like to put any Astro/React/Vue/Svelte/Preact components.
 
-```bash
-# With Node
-npm run start
+Any static assets, like images, can be placed in the `public/` directory.
 
-# Or with Nodemon
-nodemon server.js
-```
+## 🧞 Commands
+
+All commands are run from the root of the project, from a terminal:
+
+| Command           | Action                                       |
+|:----------------  |:-------------------------------------------- |
+| `npm install`     | Installs dependencies                        |
+| `npm run dev`     | Starts local dev server at `localhost:3000`  |
+| `npm run build`   | Build your production site to `./dist/`      |
+| `npm run preview` | Preview your build locally, before deploying |
+
+## 👀 Want to learn more?
+
+Feel free to check [our documentation](https://github.com/withastro/astro) or jump into our [Discord server](https://astro.build/chat).

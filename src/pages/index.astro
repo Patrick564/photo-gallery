@@ -1,0 +1,85 @@
+---
+import AWS from 'aws-sdk'
+import { v4 } from 'uuid'
+
+const S3 = new AWS.S3({
+  accessKeyId: import.meta.env.AWS_ACCESS_KEY_ID,
+  secretAccessKey: import.meta.env.AWS_SECRET_ACCESS_KEY,
+})
+
+const getImages = async () => {
+	let data
+	const params = {
+		Bucket: 'photo-gallery-heroku'
+	}
+
+	try {
+		data = await S3.listObjectsV2(params).promise()
+	} catch (error) {
+		console.log(error)
+	}
+
+	return data
+}
+
+const are = getImages()
+
+	// in post /
+	//   let params = {
+	//   let params = {
+  //   Bucket: 'photo-gallery-heroku',
+  //   Key: `${uuidv4()}-${photo.name}`,
+  //   Body: photo.data,
+  // }
+	// await S3.upload(params).promise()
+
+	// post /delete
+
+	//   let params = {
+  //   Bucket: 'photo-gallery-heroku',
+  //   Key: file,
+  // }
+
+  // try {
+  //   await S3.deleteObject(params).promise()
+---
+<html lang="en">
+	<head>
+		<meta charset="utf-8" />
+		<meta name="viewport" content="width=device-width" />
+		<title>Astro</title>
+	</head>
+	<body>
+		<!-- multipart/form-data -> multer/express file upload -->
+		<form action="">
+			<button type="submit">Send</button>
+
+			<label>
+				<!-- svg -->
+				<span>Select</span>
+				<input type="file" accept="image/*">
+			</label>
+		</form>
+
+		<main>
+			<!-- content.forEach(file => {inside}) -->
+			<div>
+				<!-- url -> https://photo-gallery-heroku.s3.us-east-2.amazonaws.com/ `${url}${file.key}` -->
+				<img src="#" alt="#">
+
+				<form action="post">
+					<input type="hidden" value="file.Key">
+
+					<button type="submit">Delete</button>
+				</form>
+			</div>
+
+			{
+				are.map((item) => {
+					return (<span>{item}</span>)
+				})
+			}
+
+		</main>
+	</body>
+</html>
