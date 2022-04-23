@@ -22,7 +22,9 @@ const getImages = async () => {
 	return data
 }
 
-const are = getImages()
+const { Contents } = await getImages()
+console.log(Contents);
+
 
 	// in post /
 	//   let params = {
@@ -75,11 +77,10 @@ const are = getImages()
 			</div>
 
 			{
-				are.map((item) => {
-					return (<span>{item}</span>)
+				Contents.map((file) => {
+					return (<img src="https://photo-gallery-heroku.s3.us-east-2.amazonaws.com/${file.Key}" />)
 				})
 			}
-
 		</main>
 	</body>
 </html>
