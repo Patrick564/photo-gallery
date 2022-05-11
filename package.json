@@ -9,10 +9,13 @@
     "preview": "astro preview"
   },
   "devDependencies": {
-    "astro": "^1.0.0-beta.17"
+    "@astrojs/react": "^0.1.1",
+    "astro": "^1.0.0-beta.17",
+    "react": "^17.0.2 || ^18.0.0",
+    "react-dom": "^17.0.2 || ^18.0.0"
   },
   "dependencies": {
-    "aws-sdk": "^2.1120.0",
+    "@aws-sdk/client-s3": "^3.88.0",
     "uuid": "^8.3.2"
   }
 }

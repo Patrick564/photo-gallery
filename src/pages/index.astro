@@ -1,49 +1,6 @@
 ---
-import AWS from 'aws-sdk'
-import { v4 } from 'uuid'
-
-const S3 = new AWS.S3({
-  accessKeyId: import.meta.env.AWS_ACCESS_KEY_ID,
-  secretAccessKey: import.meta.env.AWS_SECRET_ACCESS_KEY,
-})
-
-const getImages = async () => {
-	let data
-	const params = {
-		Bucket: 'photo-gallery-heroku'
-	}
-
-	try {
-		data = await S3.listObjectsV2(params).promise()
-	} catch (error) {
-		console.log(error)
-	}
-
-	return data
-}
-
-const { Contents } = await getImages()
-console.log(Contents);
-
-
-	// in post /
-	//   let params = {
-	//   let params = {
-  //   Bucket: 'photo-gallery-heroku',
-  //   Key: `${uuidv4()}-${photo.name}`,
-  //   Body: photo.data,
-  // }
-	// await S3.upload(params).promise()
-
-	// post /delete
-
-	//   let params = {
-  //   Bucket: 'photo-gallery-heroku',
-  //   Key: file,
-  // }
-
-  // try {
-  //   await S3.deleteObject(params).promise()
+import UploadButton from '../components/UploadButton.jsx'
+import ImagesContainer from '../components/Images.jsx'
 ---
 <html lang="en">
 	<head>
@@ -52,16 +9,7 @@ console.log(Contents);
 		<title>Astro</title>
 	</head>
 	<body>
-		<!-- multipart/form-data -> multer/express file upload -->
-		<form action="">
-			<button type="submit">Send</button>
-
-			<label>
-				<!-- svg -->
-				<span>Select</span>
-				<input type="file" accept="image/*">
-			</label>
-		</form>
+		<UploadButton client:load />
 
 		<main>
 			<!-- content.forEach(file => {inside}) -->
@@ -76,11 +24,7 @@ console.log(Contents);
 				</form>
 			</div>
 
-			{
-				Contents.map((file) => {
-					return (<img src="https://photo-gallery-heroku.s3.us-east-2.amazonaws.com/${file.Key}" />)
-				})
-			}
+			<ImagesContainer client:load />
 		</main>
 	</body>
 </html>
