@@ -1,6 +1,5 @@
 ---
-import UploadButton from '../components/UploadButton.jsx'
-import ImagesContainer from '../components/Images.jsx'
+import MainContainer from '../components/MainContainer'
 ---
 <html lang="en">
 	<head>
@@ -9,12 +8,6 @@ import ImagesContainer from '../components/Images.jsx'
 		<title>Photo Gallery</title>
 	</head>
 	<body>
-		<nav class="bg-indigo-500 border-b border-b-indigo-700 p-2">
-			<UploadButton client:load />
-		</nav>
-
-		<main class="m-5">
-			<ImagesContainer client:load />
-		</main>
+		<MainContainer client:load />
 	</body>
 </html>

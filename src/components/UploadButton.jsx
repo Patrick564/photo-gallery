@@ -1,7 +1,8 @@
-import { useState } from 'react'
+import { useRef, useState } from 'react'
 import { addImages } from '../api/s3-api'
 
-const UploadButton = () => {
+const UploadButton = ({ refreshImages }) => {
+  const fileInput = useRef(null)
   const [image, setImage] = useState()
 
   const handleImage = (e) => {
@@ -10,9 +11,11 @@ const UploadButton = () => {
 
   const sendImage = async () => {
     await addImages({ image })
-  }
 
-  console.log(!!image, 'aa')
+    fileInput.current.value = ''
+
+    refreshImages()
+  }
 
   return (
     <div className="flex justify-center items-baseline">
@@ -22,6 +25,7 @@ const UploadButton = () => {
         accept='image/*'
         name='image'
         id='image'
+        ref={fileInput}
         onChange={handleImage}
       />
 
@@ -30,7 +34,7 @@ const UploadButton = () => {
         disabled={!!!image}
         onClick={sendImage}
       >
-        Send
+        Upload
       </button>
     </div>
   )

@@ -1,4 +1,4 @@
-import { S3Client, S3 } from '@aws-sdk/client-s3'
+import { S3 } from '@aws-sdk/client-s3'
 import { v4 } from 'uuid'
 
 const credentials = {
@@ -36,28 +36,26 @@ const addImages = async ({ image }) => {
 
   try {
     await s3.uploadPart(params)
-    // console.log()
   } catch (error) {
     console.log(error)
   }
 }
 
-// const deleteImage = () => { }
+const deleteImages = async ({ image }) => {
+  const params = {
+    Bucket: 'photo-gallery-heroku',
+    Key: image
+  }
 
-	// in post /
-	//   let params = {
-
-	// post /delete
-
-	//   let params = {
-  //   Bucket: 'photo-gallery-heroku',
-  //   Key: file,
-  // }
-
-  // try {
-  //   await S3.deleteObject(params).promise()
+  try {
+    await s3.deleteObject(params)
+  } catch (error) {
+    console.log(error)
+  }
+}
 
 export {
   getImages,
-  addImages
+  addImages,
+  deleteImages
 }
