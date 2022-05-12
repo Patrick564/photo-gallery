@@ -6,24 +6,14 @@ import ImagesContainer from '../components/Images.jsx'
 	<head>
 		<meta charset="utf-8" />
 		<meta name="viewport" content="width=device-width" />
-		<title>Astro</title>
+		<title>Photo Gallery</title>
 	</head>
 	<body>
-		<UploadButton client:load />
+		<nav class="bg-indigo-500 border-b border-b-indigo-700 p-2">
+			<UploadButton client:load />
+		</nav>
 
-		<main>
-			<!-- content.forEach(file => {inside}) -->
-			<div>
-				<!-- url -> https://photo-gallery-heroku.s3.us-east-2.amazonaws.com/ `${url}${file.key}` -->
-				<img src="#" alt="#">
-
-				<form action="post">
-					<input type="hidden" value="file.Key">
-
-					<button type="submit">Delete</button>
-				</form>
-			</div>
-
+		<main class="m-5">
 			<ImagesContainer client:load />
 		</main>
 	</body>

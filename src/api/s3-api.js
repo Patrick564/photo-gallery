@@ -27,6 +27,21 @@ const getImages = async () => {
   return data
 }
 
+const addImages = async ({ image }) => {
+  let params = {
+    Bucket: 'photo-gallery-heroku',
+    Key: v4(),
+    Body: image
+  }
+
+  try {
+    await s3.uploadPart(params)
+    // console.log()
+  } catch (error) {
+    console.log(error)
+  }
+}
+
 // const deleteImage = () => { }
 
 	// in post /
@@ -42,4 +57,7 @@ const getImages = async () => {
   // try {
   //   await S3.deleteObject(params).promise()
 
-export default getImages
+export {
+  getImages,
+  addImages
+}
