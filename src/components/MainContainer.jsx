@@ -15,9 +15,7 @@ const MainContainer = () => {
   }
 
   const handleDelete = async (e) => {
-    const key = e.target.id
-
-    await deleteImages({ image: key })
+    await deleteImages({ image: e.target.id })
 
     loadImages()
   }

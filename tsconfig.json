@@ -1,5 +1,11 @@
 {
   "compilerOptions": {
-    "moduleResolution": "node"
+    "moduleResolution": "node",
+    "baseUrl": ".",
+    "paths": {
+      "@components/*": ["src/components/*"],
+      "@api/*": ["src/api/*"],
+      "@public/*": ["public/*"]
+    }
   }
 }
