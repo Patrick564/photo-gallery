@@ -1,7 +1,7 @@
 # Photo Gallery
 
 A site for upload your photos.
-[Deployed in Heroku](https://shot-gallery.herokuapp.com/)
+[Deployed in Netlify](https://aws-photo-gallery.netlify.app)
 
 ## Installation
 
